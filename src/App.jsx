@@ -1,19 +1,25 @@
 import { Routes, Route } from "react-router-dom";
 
+import Navbar from "./components/NavBar"
+import ProtectedRoute from "./components/ProtectedRoute";
+import OwnerRoute from "./components/OwnerRoute";
+
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
 import RestaurantListPage from "./pages/RestaurantListPage";
 import RestaurantDetailsPage from "./pages/RestaurantDetailsPage";
-import MyBookingsPage from "./pages/MyBookingsPage";
-import BookTablePage from "./pages/BookTablePage";
-import MyRestaurantsPage from "./pages/MyRestaurantsPage";
-import CreateRestaurantPage from "./pages/CreateRestaurantPage";
-import ManageBookingsPage from "./pages/ManageBookingsPage";
-import ProfilePage from "./pages/ProfilePage";
 
-import Navbar from "./components/NavBar";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+
+import BookTablePage from "./pages/BookTablePage";
+import MyBookingsPage from "./pages/MyBookingsPage";
+
+import CreateRestaurantPage from "./pages/CreateRestaurantPage";
+import MyRestaurantsPage from "./pages/MyRestaurantsPage";
+import ManageBookingsPage from "./pages/ManageBookingsPage";
+
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -24,27 +30,68 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
 
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-
         <Route path="/restaurants" element={<RestaurantListPage />} />
         <Route
           path="/restaurants/:restaurantId"
           element={<RestaurantDetailsPage />}
         />
 
-        <Route path="/book/:restaurantId" element={<BookTablePage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/my-bookings" element={<MyBookingsPage />} />
-
-        <Route path="/my-restaurants" element={<MyRestaurantsPage />} />
-        <Route path="/create-restaurant" element={<CreateRestaurantPage />} />
         <Route
-          path="/manage-bookings/:restaurantId"
-          element={<ManageBookingsPage />}
+          path="/book/:restaurantId"
+          element={
+            <ProtectedRoute>
+              <BookTablePage />
+            </ProtectedRoute>
+          }
         />
 
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+          path="/my-bookings"
+          element={
+            <ProtectedRoute>
+              <MyBookingsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/create-restaurant"
+          element={
+            <OwnerRoute>
+              <CreateRestaurantPage />
+            </OwnerRoute>
+          }
+        />
+
+        <Route
+          path="/my-restaurants"
+          element={
+            <OwnerRoute>
+              <MyRestaurantsPage />
+            </OwnerRoute>
+          }
+        />
+
+        <Route
+          path="/manage-bookings"
+          element={
+            <OwnerRoute>
+              <ManageBookingsPage />
+            </OwnerRoute>
+          }
+        />
       </Routes>
     </>
   );
