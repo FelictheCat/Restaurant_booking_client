@@ -23,3 +23,11 @@ export const getMyRestaurants = (token) => {
     },
   });
 };
+
+export const deleteRestaurant = (restaurantId, token) => {
+  return API.delete(`/restaurants/${restaurantId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

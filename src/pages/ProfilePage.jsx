@@ -7,6 +7,7 @@ import { getMyRestaurants } from "../services/restaurant.service";
 import BookingCard from "../components/BookingCard";
 import RestaurantCard from "../components/RestaurantCard";
 
+
 function ProfilePage() {
   const { user } = useContext(AuthContext);
 

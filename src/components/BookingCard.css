@@ -1,0 +1,23 @@
+.booking-card {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 3px solid grey;
+  background-color: white;
+}
+
+.booking-requested {
+  border-color: orange;
+}
+
+.booking-assigned {
+  border-color: blue;
+}
+
+.booking-finished {
+  border-color: green;
+}
+
+.booking-cancelled {
+  border-color: red;
+}

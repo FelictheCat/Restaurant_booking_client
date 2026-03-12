@@ -23,3 +23,39 @@ export const getOwnerBookings = (token) => {
     },
   });
 };
+
+export const assignBooking = (bookingId, token) => {
+  return API.put(
+    `/bookings/${bookingId}/assign`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+};
+
+export const cancelBooking = (bookingId, token) => {
+  return API.put(
+    `/bookings/${bookingId}/cancel`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+};
+
+export const finishBooking = (bookingId, token) => {
+  return API.put(
+    `/bookings/${bookingId}/finish`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+};

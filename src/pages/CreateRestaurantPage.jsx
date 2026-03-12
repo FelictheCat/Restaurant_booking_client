@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createRestaurant } from "../services/restaurant.service";
 import { useNavigate } from "react-router-dom";
 
+
 function CreateRestaurantPage() {
   const navigate = useNavigate();
 
