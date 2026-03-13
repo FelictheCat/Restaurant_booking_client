@@ -24,6 +24,25 @@ export const getMyRestaurants = (token) => {
   });
 };
 
+export const uploadRestaurantImage = (file, token) => {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  return API.post("/restaurants/upload", formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateRestaurant = (id, data, token) => {
+  return API.put(`/restaurants/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const deleteRestaurant = (restaurantId, token) => {
   return API.delete(`/restaurants/${restaurantId}`, {
     headers: {

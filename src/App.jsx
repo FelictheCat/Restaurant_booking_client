@@ -19,8 +19,9 @@ import MyBookingsPage from "./pages/MyBookingsPage";
 
 import CreateRestaurantPage from "./pages/CreateRestaurantPage";
 import MyRestaurantsPage from "./pages/MyRestaurantsPage";
+import EditRestaurantPage from "./pages/EditRestaurantPage";
 import ManageBookingsPage from "./pages/ManageBookingsPage";
-
+import EditProfilePage from "./pages/EditProfilePage";
 import ProfilePage from "./pages/ProfilePage";
 
 import "./App.css";
@@ -31,13 +32,10 @@ function App() {
       <Navbar />
 
       <div className="app-layout">
-
         <Sidebar />
 
         <main className="page-content">
-
           <Routes>
-
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
 
@@ -104,10 +102,25 @@ function App() {
               }
             />
 
+            <Route
+              path="/edit-restaurant/:restaurantId"
+              element={
+                <OwnerRoute>
+                  <EditRestaurantPage />
+                </OwnerRoute>
+              }
+            />
+
+            <Route
+              path="/edit-profile"
+              element={
+                <ProtectedRoute>
+                  <EditProfilePage />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
-
         </main>
-
       </div>
     </>
   );

@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { createRestaurant } from "../services/restaurant.service";
+import {
+  createRestaurant,
+  uploadRestaurantImage,
+} from "../services/restaurant.service";
 import { useNavigate } from "react-router-dom";
-
 
 function CreateRestaurantPage() {
   const navigate = useNavigate();
+  const token = localStorage.getItem("authToken");
 
   const [restaurantData, setRestaurantData] = useState({
     name: "",
     location: "",
     cuisine: "",
     tables: 0,
-    images: "",
+    images: [],
   });
 
   const handleChange = (e) => {
@@ -23,10 +26,23 @@ function CreateRestaurantPage() {
     });
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+
+    uploadRestaurantImage(file, token)
+      .then((res) => {
+        setRestaurantData({
+          ...restaurantData,
+          images: [res.data.imageUrl],
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createRestaurant(restaurantData)
+    createRestaurant(restaurantData, token)
       .then(() => {
         navigate("/my-restaurants");
       })
@@ -54,6 +70,12 @@ function CreateRestaurantPage() {
           placeholder="Tables"
           onChange={handleChange}
         />
+
+        <input type="file" onChange={handleImageUpload} />
+
+        {restaurantData.images.length > 0 && (
+          <img src={restaurantData.images[0]} alt="preview" width="200" />
+        )}
 
         <button>Create</button>
       </form>

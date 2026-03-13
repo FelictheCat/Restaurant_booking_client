@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 import { getMyBookings } from "../services/booking.service";
 import { getMyRestaurants } from "../services/restaurant.service";
 
 import BookingCard from "../components/BookingCard";
 import RestaurantCard from "../components/RestaurantCard";
-
 
 function ProfilePage() {
   const { user } = useContext(AuthContext);
@@ -34,12 +34,15 @@ function ProfilePage() {
       <h1>Profile</h1>
 
       <h2>User Info</h2>
+      {user?.profileImage && (
+        <img src={user.profileImage} width="120" alt="profile" />
+      )}
 
       <p>Username: {user?.username}</p>
       <p>Email: {user?.email}</p>
       <p>Role: {user?.role}</p>
 
-      <button>Edit Profile</button>
+      <Link to="/edit-profile">Edit Profile</Link>
 
       <hr />
 
