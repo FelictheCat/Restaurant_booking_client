@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 60px;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
 }
 
 /* HERO */
@@ -9,7 +16,6 @@
 .hero {
   text-align: center;
   padding: 80px 20px;
-  background: #f8fafc;
 }
 
 .hero h1 {
@@ -36,7 +42,6 @@
 /* HOW IT WORKS */
 
 .how-it-works {
-  background: #f1f5f9;
   padding: 40px;
   text-align: center;
 }

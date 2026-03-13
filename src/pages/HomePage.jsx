@@ -41,8 +41,6 @@ function HomePage() {
 
         <form onSubmit={handleSubmit}>
           <SearchBar search={search} setSearch={setSearch} />
-
-          <button type="submit">Search</button>
         </form>
       </section>
 

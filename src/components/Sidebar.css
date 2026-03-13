@@ -1,6 +1,6 @@
 .sidebar {
   width: 125px;
-  background-color: #1f2937;
+  background-color: #0b2545; /* navy blue */
   color: white;
   padding: 20px;
 
@@ -20,12 +20,22 @@
   text-decoration: none;
 }
 
+/* hover effect */
 .sidebar a:hover {
-  text-decoration: underline;
+  color: #3b82f6;
 }
 
+/* logout button */
 .sidebar button {
   margin-top: auto;
-  padding: 8px;
+
+  background: none;
+  border: none;
+
+  color: white;
   cursor: pointer;
+}
+
+.sidebar button:hover {
+  color: #3b82f6;
 }

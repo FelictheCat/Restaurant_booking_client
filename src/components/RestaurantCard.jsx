@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { deleteRestaurant } from "../services/restaurant.service";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import "./RestaurantCard.css";
 
 function RestaurantCard({ restaurant, refreshRestaurants }) {
   const token = localStorage.getItem("authToken");
@@ -28,16 +29,24 @@ function RestaurantCard({ restaurant, refreshRestaurants }) {
       <p>{restaurant.location}</p>
       <p>{restaurant.cuisine}</p>
       <p>Tables: {restaurant.tables}</p>
-      <Link to={`/restaurants/${restaurant._id}`}>View Details</Link>
 
-{user?.role === "owner" && restaurant.owner === user._id && (
-  <>
-    <Link to={`/edit-restaurant/${restaurant._id}`}>
-      <button>Edit</button>
-    </Link>
-    <button onClick={handleDelete}>Delete</button>
-  </>
-)}
+      <div className="btn-group">
+        <Link className="btn" to={`/restaurants/${restaurant._id}`}>
+          View Details
+        </Link>
+
+        {user?.role === "owner" && restaurant.owner === user._id && (
+          <>
+            <Link className="btn" to={`/edit-restaurant/${restaurant._id}`}>
+              Edit
+            </Link>
+
+            <button className="btn btn-danger" onClick={handleDelete}>
+              Delete
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

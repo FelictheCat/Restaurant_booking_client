@@ -9,7 +9,6 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <h2>Dashboard</h2>
 
       <Link to="/profile">Profile</Link>
 
@@ -23,7 +22,6 @@ function Sidebar() {
         </>
       )}
 
-      <button onClick={logoutUser}>Logout</button>
     </div>
   );
 }

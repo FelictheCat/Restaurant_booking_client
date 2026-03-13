@@ -1,0 +1,34 @@
+.navbar {
+  background-color: #0b2545; /* navy blue */
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* spacing between links */
+}
+
+/* remove underline and make text white */
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+/* hover effect */
+.navbar a:hover {
+  color: #3b82f6; /* blue */
+}
+
+/* logout button */
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  color: #3b82f6;
+}

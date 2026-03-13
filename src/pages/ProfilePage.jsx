@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import "./ProfilePage.css";
 
 import { getMyBookings } from "../services/booking.service";
 import { getMyRestaurants } from "../services/restaurant.service";
@@ -29,40 +30,60 @@ function ProfilePage() {
       .catch((err) => console.log(err));
   }, []);
 
-  return (
-    <div>
-      <h1>Profile</h1>
+return (
+  <div className="profile-layout">
 
-      <h2>User Info</h2>
-      {user?.profileImage && (
-        <img src={user.profileImage} width="120" alt="profile" />
-      )}
+    {/* LEFT SIDE */}
+    <div className="profile-main">
 
-      <p>Username: {user?.username}</p>
-      <p>Email: {user?.email}</p>
-      <p>Role: {user?.role}</p>
+      <h1>My Bookings</h1>
 
-      <Link to="/edit-profile">Edit Profile</Link>
-
-      <hr />
-
-      <h2>My Bookings</h2>
-
-      {bookings.map((booking) => (
-        <BookingCard key={booking._id} booking={booking} />
-      ))}
+      <div className="booking-grid">
+        {bookings.map((booking) => (
+          <BookingCard key={booking._id} booking={booking} />
+        ))}
+      </div>
 
       {user?.role === "owner" && (
         <>
-          <h2>My Restaurants</h2>
+          <h1>My Restaurants</h1>
 
-          {restaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant._id} restaurant={restaurant} />
-          ))}
+          <div className="restaurant-grid">
+            {restaurants.map((restaurant) => (
+              <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+            ))}
+          </div>
         </>
       )}
+
     </div>
-  );
+
+
+    {/* RIGHT PROFILE CARD */}
+    <div className="profile-card">
+
+      {user?.profileImage && (
+        <img
+          src={user.profileImage}
+          alt="profile"
+          className="profile-avatar"
+        />
+      )}
+
+      <h2>{user?.username}</h2>
+
+      <p>{user?.email}</p>
+
+      <p className="profile-role">{user?.role}</p>
+
+      <Link to="/edit-profile" className="profile-edit">
+        Edit Profile
+      </Link>
+
+    </div>
+
+  </div>
+);
 }
 
 export default ProfilePage;

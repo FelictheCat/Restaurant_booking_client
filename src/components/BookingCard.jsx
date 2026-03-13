@@ -72,23 +72,37 @@ function BookingCard({ booking, refreshBookings }) {
         <strong>Status:</strong> {booking.status}
       </p>
 
-      {user?.role === "owner" && booking.status === "requested" && (
-        <>
-          <button onClick={handleAssign}>Assign</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </>
-      )}
+      <div className="btn-group">
+        {user?.role === "owner" && booking.status === "requested" && (
+          <>
+            <button className="btn" onClick={handleAssign}>
+              Assign
+            </button>
 
-      {user?.role === "owner" && booking.status === "assigned" && (
-        <>
-          <button onClick={handleFinish}>Finish</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </>
-      )}
+            <button className="btn btn-danger" onClick={handleCancel}>
+              Cancel
+            </button>
+          </>
+        )}
 
-      {user?.role === "customer" && booking.status === "requested" && (
-        <button onClick={handleCancel}>Cancel Booking</button>
-      )}
+        {user?.role === "owner" && booking.status === "assigned" && (
+          <>
+            <button className="btn" onClick={handleFinish}>
+              Finish
+            </button>
+
+            <button className="btn btn-danger" onClick={handleCancel}>
+              Cancel
+            </button>
+          </>
+        )}
+
+        {user?.role === "customer" && booking.status === "requested" && (
+          <button className="btn btn-danger" onClick={handleCancel}>
+            Cancel Booking
+          </button>
+        )}
+      </div>
     </div>
   );
 }

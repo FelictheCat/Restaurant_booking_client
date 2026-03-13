@@ -13,3 +13,40 @@
 }
 
 
+/* GLOBAL BUTTON STYLE */
+
+.btn {
+  background-color: #0b2545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* secondary button (delete / cancel) */
+
+.btn-danger {
+  background-color: #dc2626;
+}
+
+.btn-danger:hover {
+  background-color: #ef4444;
+}
+
+
+/* button spacing */
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}

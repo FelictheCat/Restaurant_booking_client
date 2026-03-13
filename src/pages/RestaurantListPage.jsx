@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getRestaurants } from "../services/restaurant.service";
 import { useSearchParams } from "react-router-dom";
+import "./RestaurantListPage.css";
+
 
 import RestaurantCard from "../components/RestaurantCard";
 import SearchBar from "../components/SearchBar";

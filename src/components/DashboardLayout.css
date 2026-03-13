@@ -1,0 +1,17 @@
+.dashboard-layout {
+  display: flex;
+}
+
+.dashboard-content {
+
+  margin-left: 220px; /* sidebar width */
+
+  padding: 40px;
+
+  max-width: 1200px;
+  margin-right: auto;
+}
+
+.dashboard-content h1 {
+  margin-bottom: 25px;
+}
